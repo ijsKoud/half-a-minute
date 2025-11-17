@@ -1,0 +1,79 @@
+[versions]
+agp = "8.10.0"
+android-compileSdk = "35"
+android-minSdk = "24"
+android-targetSdk = "35"
+androidx-activityCompose = "1.10.1"
+androidx-appcompat = "1.7.0"
+androidx-espressoCore = "3.6.1"
+androidx-test-junit = "1.2.1"
+androidx-navigationCompose = "2.9.0-beta01"
+androidx-lifecycleViewmodel = "2.9.0"
+androidx-coreSplash = "1.0.1"
+androidx-room = "2.7.1"
+androidx-sqlite = "2.5.1"
+compose = "1.8.2"
+compose-plugin = "1.8.0"
+junit = "4.13.2"
+kotlin = "2.1.21"
+coroutines = "1.10.2"
+spotless = "6.21.0"
+koin = "4.0.4"
+koin-ksp = "2.0.0"
+ksp = "2.1.21-2.0.1"
+ktor = "3.1.3"
+coil = "3.2.0"
+
+[libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+
+kotlinx-coroutinesCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-junit" }
+androidx-espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
+androidx-navigationCompose = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "androidx-navigationCompose" }
+androidx-coreSplash = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidx-coreSplash" }
+androidx-lifecycleViewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycleViewmodel" }
+androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+androidx-roomRuntime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room" }
+androidx-roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
+androidx-sqliteBundled = { group = "androidx.sqlite", name = "sqlite-bundled", version.ref = "androidx-sqlite" }
+
+
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-toolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin" }
+koin-composeViewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin" }
+koin-annotations = { group = "io.insert-koin", name = "koin-annotations", version.ref = "koin-ksp" }
+koin-kspCompiler = { group = 'io.insert-koin', name = "koin-ksp-compiler", version.ref = 'koin-ksp' }
+
+ktor-bom = { group = "io.ktor", name = "ktor-bom", version.ref = "ktor" }
+ktor-core = { group = "io.ktor", name = "ktor-client-core" }
+ktor-serializationJson = { group = "io.ktor", name = "ktor-serialization-kotlinx-json" }
+ktor-contentNegotiation = { group = "io.ktor", name = "ktor-client-content-negotiation" }
+ktor-logging = { group = "io.ktor", name = "ktor-client-logging" }
+ktor-resources = { group = "io.ktor", name = "ktor-client-resources" }
+ktor-android = { group = "io.ktor", name = "ktor-client-android" }
+ktor-ios = { group = "io.ktor", name = "ktor-client-darwin" }
+
+coil = { group = "io.coil-kt.coil3", name = "coil", version.ref = "coil" }
+coil-core = { group = "io.coil-kt.coil3", name = "coil-core", version.ref = "coil" }
+coil-composeCore = { group = "io.coil-kt.coil3", name = "coil-compose-core", version.ref = "coil" }
+coil-network = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", version.ref = "coil" }
+
+#plugins
+kotlinGradle = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+androidGradle = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+spotlessGradle = { group = "com.diffplug.spotless", name = "spotless-plugin-gradle", version.ref = "spotless" }
+kspGradle = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+
+[plugins]
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+jetbrains-composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = 'org.jetbrains.kotlin.plugin.serialization', version.ref = 'kotlin' }

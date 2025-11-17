@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme without actionbar. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+
+    <style name="AppTheme.Starting" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">#EDF6FF</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>  # Required.
+    </style>
+</resources>
