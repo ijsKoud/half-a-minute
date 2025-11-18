@@ -14,6 +14,8 @@ internal val LocalColors = staticCompositionLocalOf { appColors[0] }
 internal val appColorGroups = mapOf(
     "blurple" to AppColorPalette.Static.Blurple,
     "green" to AppColorPalette.Static.Green,
+    "yellow" to AppColorPalette.Static.Yellow,
+    "orange" to AppColorPalette.Static.Orange,
 )
 internal val appColors = appColorGroups.map {
         (name, colors) ->

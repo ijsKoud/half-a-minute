@@ -24,5 +24,25 @@ internal object AppColorPalette {
             override val white = Color(color = 0xFF_FFFFFF)
             override val danger = Color(color = 0xFF_C23D39)
         }
+
+        object Yellow: StaticColor {
+            override val darkMode = true
+            override val primary = Color(color = 0xFF_FFC534)
+            override val secondary = Color(color = 0xFF_FFE9B1)
+            override val tertiary = Color(color = 0xFF_7D5900)
+            override val black = Color(color = 0xFF_000000)
+            override val white = Color(color = 0xFF_FFFFFF)
+            override val danger = Color(color = 0xFF_FF0700)
+        }
+
+        object Orange: StaticColor {
+            override val darkMode = false
+            override val primary = Color(color = 0xFF_FF8B26)
+            override val secondary = Color(color = 0xFF_FFBA7E)
+            override val tertiary = Color(color = 0xFF_955014)
+            override val black = Color(color = 0xFF_000000)
+            override val white = Color(color = 0xFF_FFFFFF)
+            override val danger = Color(color = 0xFF_91312E)
+        }
     }
 }
