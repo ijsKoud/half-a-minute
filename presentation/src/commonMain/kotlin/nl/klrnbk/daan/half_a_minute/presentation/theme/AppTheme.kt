@@ -6,7 +6,7 @@ import androidx.compose.runtime.ReadOnlyComposable
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.applied.LocalColors
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.applied.appColors
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.AppColors
-import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.applied.AppTypographies
+import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.applied.appTypographies
 import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.applied.LocalTypography
 import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.definition.AppTypography
 
@@ -16,7 +16,7 @@ fun AppTheme(content: @Composable () -> Unit) {
 
     CompositionLocalProvider(
         LocalColors provides colors,
-        LocalTypography provides AppTypographies(),
+        LocalTypography provides appTypographies(),
     ) {
         SystemAppearance(isDark = colors.darkMode)
         content()
