@@ -1,7 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-// TODO: Rename project name
-rootProject.name = "KMP-Template"
+rootProject.name = "Half-A-Minute"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
