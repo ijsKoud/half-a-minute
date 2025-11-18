@@ -14,4 +14,20 @@ object Dimension {
         val xxlarge = 32.dp
         val xxxlarge = 64.dp
     }
+
+    object BorderRadius {
+        val medium = 12.dp
+    }
+
+    object Button {
+        val borderRadius = BorderRadius.medium
+        val horizontalPadding = Padding.large
+        val verticalPadding = Padding.medium
+    }
+
+    object Input {
+        val borderRadius = BorderRadius.medium
+        val horizontalPadding = Padding.large
+        val verticalPadding = Padding.medium
+    }
 }
