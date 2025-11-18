@@ -5,8 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.applied.LocalColors
-import nl.klrnbk.daan.half_a_minute.presentation.theme.color.applied.appColorsDark
-import nl.klrnbk.daan.half_a_minute.presentation.theme.color.applied.appColorsLight
+import nl.klrnbk.daan.half_a_minute.presentation.theme.color.applied.appColors
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.AppColors
 import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.applied.AppTypographies
 import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.applied.LocalTypography
@@ -14,12 +13,13 @@ import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.definition.App
 
 @Composable
 fun AppTheme(content: @Composable () -> Unit) {
-    val colors = if (isSystemInDarkTheme()) appColorsDark else appColorsLight
+    val colors = appColors[0]
+
     CompositionLocalProvider(
         LocalColors provides colors,
         LocalTypography provides AppTypographies(),
     ) {
-        SystemAppearance(isDark = isSystemInDarkTheme())
+        SystemAppearance(isDark = colors.darkMode)
         content()
     }
 }

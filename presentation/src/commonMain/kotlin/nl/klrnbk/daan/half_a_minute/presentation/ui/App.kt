@@ -33,7 +33,7 @@ fun App(
 ) {
     AppTheme {
         Surface(
-            color = AppTheme.colors.background,
+            color = AppTheme.colors.primary,
             modifier = Modifier.fillMaxSize(),
         ) {
             NavHost(
