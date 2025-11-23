@@ -27,7 +27,7 @@ private fun Preview(@PreviewParameter(TypographyPreviewParameterProvider::class)
             modifier = Modifier
                 .fillMaxWidth()
                 .background(
-                    color = AppTheme.colors.background,
+                    color = AppTheme.colors.primary,
                     shape = RoundedCornerShape(Dimension.Padding.medium),
                 )
                 .padding(Dimension.Padding.medium),
@@ -43,13 +43,13 @@ private fun Preview(@PreviewParameter(TypographyPreviewParameterProvider::class)
             ) {
                 Text(
                     text = model.label.name,
-                    color = AppTheme.colors.text,
+                    color = AppTheme.colors.text.base,
                     style = fontMapper.map(model.label),
                 )
             }
             Text(
                 text = model.text,
-                color = AppTheme.colors.text,
+                color = AppTheme.colors.text.base,
                 style = fontMapper.map(model.label),
             )
         }
