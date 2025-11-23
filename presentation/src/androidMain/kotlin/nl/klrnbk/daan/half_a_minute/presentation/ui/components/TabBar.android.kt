@@ -2,6 +2,7 @@ package nl.klrnbk.daan.half_a_minute.presentation.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.PrimaryTabRow
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import nl.klrnbk.daan.half_a_minute.presentation.constants.TabBarEntry
 import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
@@ -44,7 +46,8 @@ actual fun tabBar(
                     Icon(
                         imageVector = entry.icon,
                         contentDescription = "${entry.name} page icon",
-                        tint = AppTheme.colors.text.base
+                        tint = AppTheme.colors.text.base,
+                        modifier = Modifier.size(24.dp)
                     )
                 },
                 text = {

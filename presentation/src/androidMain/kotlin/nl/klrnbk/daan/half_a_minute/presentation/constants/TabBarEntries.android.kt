@@ -2,9 +2,9 @@ package nl.klrnbk.daan.half_a_minute.presentation.constants
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
+import nl.klrnbk.daan.half_a_minute.presentation.ui.icons.HistoryIcon
 
 actual fun getTabBarEntries(): List<TabBarEntry> {
     return listOf(
@@ -15,7 +15,7 @@ actual fun getTabBarEntries(): List<TabBarEntry> {
         ),
         TabBarEntry(
             name = "History",
-            icon = Icons.Filled.Refresh,
+            icon = HistoryIcon,
             path = "/history",
         ),
         TabBarEntry(
@@ -31,5 +31,5 @@ actual data class TabBarEntry(
     val icon: ImageVector,
     private val path: String,
 ) {
-    actual fun getPath(): String = ""
+    actual fun getPath(): String = path
 }
