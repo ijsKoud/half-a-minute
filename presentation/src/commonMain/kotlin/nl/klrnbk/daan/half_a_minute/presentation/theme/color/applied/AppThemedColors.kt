@@ -4,7 +4,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.AppColors
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.ButtonsGroup
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.InputsGroup
-import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.Interaction
+import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.InteractionStyle
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.InteractionColors
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.TextColors
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.source.AppColorPalette
@@ -33,7 +33,7 @@ internal val appColors = appColorGroups.map {
                     base = colors.white
                 ),
                 input = InputsGroup(
-                    default = Interaction(
+                    default = InteractionStyle(
                         background = InteractionColors(
                             base = colors.secondary,
                             muted = colors.secondary.copy(alpha = 0.5F)
@@ -43,7 +43,7 @@ internal val appColors = appColorGroups.map {
                             muted = colors.tertiary.copy(alpha = 0.5F)
                         )
                     ),
-                    danger = Interaction(
+                    danger = InteractionStyle(
                         background = InteractionColors(
                             base = colors.danger,
                             muted = colors.danger.copy(alpha = 0.5F)
@@ -56,7 +56,7 @@ internal val appColors = appColorGroups.map {
                     )
                 ),
                 button = ButtonsGroup(
-                    primary = Interaction(
+                    primary = InteractionStyle(
                         background = InteractionColors(
                             base = colors.secondary,
                             muted = colors.secondary.copy(alpha = 0.4F)
@@ -66,7 +66,7 @@ internal val appColors = appColorGroups.map {
                             muted = colors.white.copy(alpha = 0.5F)
                         )
                     ),
-                    secondary = Interaction(
+                    secondary = InteractionStyle(
                         background = InteractionColors(
                             base = colors.tertiary,
                             muted = colors.tertiary.copy(alpha = 0.4F)
@@ -76,7 +76,7 @@ internal val appColors = appColorGroups.map {
                             muted = colors.white.copy(alpha = 0.5F)
                         )
                     ),
-                    danger = Interaction(
+                    danger = InteractionStyle(
                         background = InteractionColors(
                             base = colors.danger,
                             muted = colors.danger.copy(alpha = 0.5F)
