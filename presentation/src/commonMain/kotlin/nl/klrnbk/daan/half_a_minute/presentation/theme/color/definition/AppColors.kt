@@ -26,19 +26,19 @@ data class TextColors(
 
 @Immutable
 data class InputsGroup(
-    val default: Interaction,
-    val danger: Interaction
+    val default: InteractionStyle,
+    val danger: InteractionStyle
 )
 
 @Immutable
 data class ButtonsGroup(
-    val primary: Interaction,
-    val secondary: Interaction,
-    val danger: Interaction,
+    val primary: InteractionStyle,
+    val secondary: InteractionStyle,
+    val danger: InteractionStyle,
 )
 
 @Immutable
-data class Interaction(
+data class InteractionStyle(
     val background: InteractionColors,
     val text: InteractionColors
 )
