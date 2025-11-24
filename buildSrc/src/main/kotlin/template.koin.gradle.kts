@@ -1,4 +1,4 @@
-import gradle.kotlin.dsl.accessors._03443ba5827570f5200fc5a097e36519.ksp
+import gradle.kotlin.dsl.accessors._0f2de5e27de39b5518fc15a55d9768e9.ksp
 
 plugins {
     kotlin("multiplatform")

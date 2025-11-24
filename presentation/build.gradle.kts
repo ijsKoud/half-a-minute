@@ -66,6 +66,10 @@ kotlin {
             implementation(libs.coil.composeCore)
             implementation(libs.coil.network)
         }
+
+        iosMain.dependencies {
+            implementation(libs.snizzors)
+        }
     }
 }
 
