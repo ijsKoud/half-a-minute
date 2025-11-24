@@ -20,7 +20,7 @@ import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-actual fun tabBar(
+actual fun TabBar(
     entries: List<TabBarEntry>,
     selectedItemColor: Color,
     onSelect: (Int) -> Unit,

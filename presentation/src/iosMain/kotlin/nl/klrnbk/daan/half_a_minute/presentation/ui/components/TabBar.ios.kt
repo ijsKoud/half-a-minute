@@ -25,7 +25,7 @@ private var storedTabBarDelegate: TabBarDelegate? = null
 
 @OptIn(ExperimentalForeignApi::class)
 @Composable
-actual fun tabBar(
+actual fun TabBar(
     entries: List<TabBarEntry>,
     selectedItemColor: Color,
     onSelect: (Int) -> Unit,

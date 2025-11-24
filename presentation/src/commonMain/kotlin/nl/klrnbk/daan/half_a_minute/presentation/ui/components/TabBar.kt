@@ -5,7 +5,7 @@ import androidx.compose.ui.graphics.Color
 import nl.klrnbk.daan.half_a_minute.presentation.constants.TabBarEntry
 
 @Composable
-expect fun tabBar(
+expect fun TabBar(
     entries: List<TabBarEntry>,
     selectedItemColor: Color,
     onSelect: (Int) -> Unit,
