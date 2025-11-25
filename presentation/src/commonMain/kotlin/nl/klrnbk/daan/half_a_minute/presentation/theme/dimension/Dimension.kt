@@ -15,6 +15,15 @@ object Dimension {
         val xxxlarge = 64.dp
     }
 
+    object Spacing {
+        val small = 4.dp
+        val base = 8.dp
+        val medium = 12.dp
+        val large = 16.dp
+        val xlarge = 32.dp
+        val xxlarge = 64.dp
+    }
+
     object BorderRadius {
         val medium = 12.dp
     }
