@@ -9,11 +9,11 @@ import nl.klrnbk.daan.half_a_minute.data.components.room.entity.TeamEntity
 @Dao
 interface TeamDao {
     @Insert
-    fun insert(entity: TeamEntity)
+    suspend fun insert(entity: TeamEntity)
 
     @Update
-    fun update(entity: TeamEntity)
+    suspend fun update(entity: TeamEntity)
 
     @Delete
-    fun delete(entity: TeamEntity)
+    suspend fun delete(entity: TeamEntity)
 }

@@ -8,6 +8,7 @@ plugins {
     id("template.ksp-targets")
     id("template.koin")
     id("template.room")
+    id("compiler-args")
 }
 
 kotlin {
