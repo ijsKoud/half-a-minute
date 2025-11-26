@@ -5,4 +5,10 @@ enum class GameStatus {
     COMPLETED
 }
 
-data class Game(val id: Long, val status: GameStatus, val host: Player, val teams: List<Team>)
+data class Game(
+    val id: Long,
+    val status: GameStatus,
+    val host: Player,
+    val teams: List<Team>,
+    val players: List<Player>
+)
