@@ -5,14 +5,14 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
 import androidx.room.TypeConverters
-import nl.klrnbk.daan.half_a_minute.data.room.converter.GameEntityConverters
+import nl.klrnbk.daan.half_a_minute.data.room.converter.GameStatusConverter
 
 @Database(
     entities = [],
     version = 1
 )
 @ConstructedBy(AppDatabaseConstructor::class)
-@TypeConverters(GameEntityConverters::class)
+@TypeConverters(GameStatusConverter::class)
 abstract class AppDatabase : RoomDatabase()
 
 @Suppress("NO_ACTUAL_FOR_EXPECT")
