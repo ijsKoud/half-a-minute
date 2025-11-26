@@ -1,4 +1,4 @@
-package nl.klrnbk.daan.half_a_minute.data.room.entity
+package nl.klrnbk.daan.half_a_minute.data.components.room.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

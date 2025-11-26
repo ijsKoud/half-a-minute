@@ -1,4 +1,4 @@
-package nl.klrnbk.daan.half_a_minute.data.room.converter
+package nl.klrnbk.daan.half_a_minute.data.components.room.converter
 
 import androidx.room.TypeConverter
 import nl.klrnbk.daan.half_a_minute.domain.game.model.GameStatus

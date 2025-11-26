@@ -1,13 +1,13 @@
-package nl.klrnbk.daan.half_a_minute.data.room.di
+package nl.klrnbk.daan.half_a_minute.data.components.room.di
 
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import nl.klrnbk.daan.half_a_minute.data.components.room.AppDatabase
+import nl.klrnbk.daan.half_a_minute.data.components.room.AppDatabaseConfig
+import nl.klrnbk.daan.half_a_minute.data.components.room.AppDatabaseProvider
 import nl.klrnbk.daan.half_a_minute.data.config.DataConfig
 import nl.klrnbk.daan.half_a_minute.data.di.qualifiers.LocalAppDatabaseConfig
-import nl.klrnbk.daan.half_a_minute.data.room.AppDatabase
-import nl.klrnbk.daan.half_a_minute.data.room.AppDatabaseConfig
-import nl.klrnbk.daan.half_a_minute.data.room.AppDatabaseProvider
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
 

@@ -1,16 +1,15 @@
-package nl.klrnbk.daan.half_a_minute.data.room.entity
+package nl.klrnbk.daan.half_a_minute.data.components.room.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
-import nl.klrnbk.daan.half_a_minute.domain.game.model.TeamName
 
 @OptIn(ExperimentalUuidApi::class)
-@Entity("team")
-data class TeamEntity(
+@Entity("player")
+data class PlayerEntity(
     @PrimaryKey(autoGenerate = true) val id: Uuid,
+    val teamId: Uuid?,
     val gameId: Uuid,
-    val name: TeamName,
-    val pointsPerRound: List<Int>
+    val name: String
 )

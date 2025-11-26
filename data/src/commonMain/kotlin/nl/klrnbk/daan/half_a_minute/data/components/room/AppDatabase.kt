@@ -1,4 +1,4 @@
-package nl.klrnbk.daan.half_a_minute.data.room
+package nl.klrnbk.daan.half_a_minute.data.components.room
 
 import androidx.room.ConstructedBy
 import androidx.room.Database
