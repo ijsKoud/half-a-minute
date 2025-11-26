@@ -9,11 +9,11 @@ import nl.klrnbk.daan.half_a_minute.data.components.room.entity.PlayerEntity
 @Dao
 interface PlayerDao {
     @Insert
-    fun insert(entity: PlayerEntity)
+    suspend fun insert(entity: PlayerEntity)
 
     @Update
-    fun update(entity: PlayerEntity)
+    suspend fun update(entity: PlayerEntity)
 
     @Delete
-    fun delete(entity: PlayerEntity)
+    suspend fun delete(entity: PlayerEntity)
 }
