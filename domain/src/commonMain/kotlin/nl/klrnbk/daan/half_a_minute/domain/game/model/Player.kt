@@ -1,3 +1,7 @@
 package nl.klrnbk.daan.half_a_minute.domain.game.model
 
-data class Player(val id: Long, val name: String)
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
+
+@OptIn(ExperimentalUuidApi::class)
+data class Player(val id: Uuid, val name: String)
