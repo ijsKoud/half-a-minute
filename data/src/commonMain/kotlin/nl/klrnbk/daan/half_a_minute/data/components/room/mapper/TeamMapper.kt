@@ -1,6 +1,7 @@
 package nl.klrnbk.daan.half_a_minute.data.components.room.mapper
 
 import nl.klrnbk.daan.half_a_minute.data.components.room.dao.relations.TeamWithPlayersRelation
+import nl.klrnbk.daan.half_a_minute.data.components.room.entity.TeamEntity
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Team
 import org.koin.core.annotation.Factory
 
@@ -15,4 +16,11 @@ class TeamMapper(private val playerMapper: PlayerMapper) {
             players = mappedPlayers
         )
     }
+
+    fun fromTeamEntity(entity: TeamEntity): Team = Team(
+        id = entity.id,
+        name = entity.name,
+        pointsPerRound = entity.pointsPerRound,
+        players = emptyList()
+    )
 }
