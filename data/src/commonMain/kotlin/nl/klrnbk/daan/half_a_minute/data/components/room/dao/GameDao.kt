@@ -12,8 +12,12 @@ import nl.klrnbk.daan.half_a_minute.data.components.room.entity.GameEntity
 interface GameDao {
     @Transaction
     @Query("SELECT * FROM game WHERE game.id = :id")
-    suspend fun getById(id: Uuid): GameWithTeamsPlayersAndHost
+    suspend fun getById(id: Uuid): GameWithTeamsPlayersAndHost?
 
     @Insert
     suspend fun insert(game: GameEntity)
+
+    @Transaction
+    @Query("UPDATE game SET hostId = :hostId WHERE game.id = :gameId")
+    suspend fun assignHostToGameById(gameId: Uuid, hostId: Uuid)
 }
