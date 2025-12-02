@@ -5,7 +5,9 @@ import nl.klrnbk.daan.half_a_minute.data.components.room.AppDatabase
 import nl.klrnbk.daan.half_a_minute.data.components.room.mapper.PlayerMapper
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Player
 import nl.klrnbk.daan.half_a_minute.domain.game.repository.PlayerRepository
+import org.koin.core.annotation.Single
 
+@Single
 class PlayerDataRepository(
     private val playerMapper: PlayerMapper,
     private val database: AppDatabase

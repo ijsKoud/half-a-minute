@@ -7,7 +7,9 @@ import nl.klrnbk.daan.half_a_minute.data.components.room.mapper.GameMapper
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Game
 import nl.klrnbk.daan.half_a_minute.domain.game.model.GameStatus
 import nl.klrnbk.daan.half_a_minute.domain.game.repository.GameRepository
+import org.koin.core.annotation.Single
 
+@Single
 class GameDataRepository(private val gameMapper: GameMapper, private val database: AppDatabase) :
     GameRepository {
     override suspend fun getGameById(id: Uuid): Game? {
