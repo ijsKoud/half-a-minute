@@ -6,4 +6,4 @@ import kotlin.uuid.Uuid
 import nl.klrnbk.daan.half_a_minute.domain.game.model.GameStatus
 
 @Entity("game")
-data class GameEntity(@PrimaryKey val id: Uuid, val status: GameStatus, val hostId: Long)
+data class GameEntity(@PrimaryKey val id: Uuid, val status: GameStatus, val hostId: Uuid?)
