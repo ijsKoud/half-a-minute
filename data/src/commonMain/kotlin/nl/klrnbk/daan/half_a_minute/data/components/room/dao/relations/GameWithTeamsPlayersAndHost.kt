@@ -15,6 +15,12 @@ data class GameWithTeamsPlayersAndHost(
     val players: List<PlayerEntity>,
 
     @Relation(
+        parentColumn = "hostId",
+        entityColumn = "id"
+    )
+    val host: PlayerEntity?,
+
+    @Relation(
         entity = TeamEntity::class,
         parentColumn = "id",
         entityColumn = "gameId"
