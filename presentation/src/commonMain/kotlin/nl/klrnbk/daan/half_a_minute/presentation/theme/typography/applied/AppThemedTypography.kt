@@ -15,21 +15,26 @@ fun appTypographies() = AppTypography(
     h1 = TextStyle(
         fontFamily = interFontFamily(),
         fontWeight = FontWeight.Bold,
-        fontSize = 26.sp,
+        fontSize = 26.sp
     ),
     body = TextStyle(
         fontFamily = interFontFamily(),
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp,
+        fontSize = 14.sp
     ),
     button = TextStyle(
         fontFamily = interFontFamily(),
         fontWeight = FontWeight.SemiBold,
-        fontSize = 12.sp,
+        fontSize = 12.sp
     ),
     input = TextStyle(
         fontFamily = interFontFamily(),
         fontWeight = FontWeight.SemiBold,
-        fontSize = 14.sp,
+        fontSize = 14.sp
     ),
+    inputSupportMessage = TextStyle(
+        fontFamily = interFontFamily(),
+        fontWeight = FontWeight.Normal,
+        fontSize = 10.sp
+    )
 )
