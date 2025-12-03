@@ -8,6 +8,7 @@ plugins {
     id("template.android-app")
     id("template.ksp-common")
     id("template.koin")
+    id("compiler-args")
 }
 
 // TODO: this can be removed when Koin uses the KMP viewmodel import instead of Android
@@ -28,7 +29,7 @@ kotlin {
     listOf(
         iosX64(),
         iosArm64(),
-        iosSimulatorArm64(),
+        iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "Presentation"
