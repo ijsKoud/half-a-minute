@@ -15,7 +15,8 @@ fun appTypographies() = AppTypography(
     h1 = TextStyle(
         fontFamily = interFontFamily(),
         fontWeight = FontWeight.Bold,
-        fontSize = 26.sp
+        fontSize = 26.sp,
+        lineHeight = 28.sp
     ),
     body = TextStyle(
         fontFamily = interFontFamily(),

@@ -1,6 +1,7 @@
 package nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.components
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Icon
@@ -14,9 +15,9 @@ import nl.klrnbk.daan.half_a_minute.presentation.ui.components.button.StyledButt
 import nl.klrnbk.daan.half_a_minute.presentation.ui.icons.ArrowLeft
 
 @Composable
-fun GoBackButton(onClick: () -> Unit) {
+fun GoBackButton(modifier: Modifier = Modifier.fillMaxWidth(), onClick: () -> Unit) {
     StyledButton(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier,
         onClick = onClick,
         style = AppTheme.colors.button.secondary,
         textOnly = true
