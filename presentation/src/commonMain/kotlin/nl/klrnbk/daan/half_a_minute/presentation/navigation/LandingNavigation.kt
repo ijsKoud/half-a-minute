@@ -11,10 +11,12 @@ fun NavController.navigateToLanding() {
     this.navigate(route = LandingRoute)
 }
 
-fun NavGraphBuilder.landingScreen() {
+fun NavGraphBuilder.landingScreen(navController: NavController) {
     composable(
-        route = LandingRoute,
+        route = LandingRoute
     ) {
-        LandingScreen()
+        LandingScreen(
+            navigateToCreateGame = navController::navigateToCreateGame
+        )
     }
 }

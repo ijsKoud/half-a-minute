@@ -25,7 +25,7 @@ fun InputForm(onSubmit: (String) -> Unit, viewModel: HostNameInputViewModel = ko
     StyledButton(
         modifier = Modifier.fillMaxWidth(),
         disabled = state.error != null || state.value.isEmpty(),
-        onClick = { if (state.error != null) onSubmit(state.value) }
+        onClick = { onSubmit(state.value) }
     ) {
         Text("Continue")
     }
