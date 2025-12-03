@@ -9,4 +9,5 @@ data class AppTypography(
     val body: TextStyle = TextStyle.Default,
     val button: TextStyle = TextStyle.Default,
     val input: TextStyle = TextStyle.Default,
+    val inputSupportMessage: TextStyle = TextStyle.Default
 )
