@@ -12,7 +12,7 @@ class CreateGameWithHost(
 ) {
     suspend operator fun invoke(hostName: String): Result<Uuid> = runCatching {
         val game = gameRepository.createGame()
-        val host = playerRepository.createPlayer(hostName)
+        val host = playerRepository.createPlayer(hostName, game.id)
 
         gameRepository.assignHostToGame(game.id, host.id)
         return@runCatching game.id
