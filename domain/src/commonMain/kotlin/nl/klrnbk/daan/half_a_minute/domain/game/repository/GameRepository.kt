@@ -6,6 +6,5 @@ import nl.klrnbk.daan.half_a_minute.domain.game.model.Game
 interface GameRepository {
     suspend fun getGameById(id: Uuid): Game?
     suspend fun createGame(hostUserName: String): Game
-
     suspend fun assignHostToGame(gameId: Uuid, hostId: Uuid): Game?
 }

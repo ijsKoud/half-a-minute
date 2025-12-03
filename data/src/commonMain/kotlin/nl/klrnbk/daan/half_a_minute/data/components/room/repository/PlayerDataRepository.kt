@@ -25,7 +25,7 @@ class PlayerDataRepository(
     }
 
     override suspend fun addPlayerToTeam(playerId: Uuid, teamId: Uuid): Player? {
-        val entity = database.playerDao().addPlayerToTeam(playerId, teamId)
-        return playerMapper.map(entity)
+        database.playerDao().addPlayerToTeam(playerId, teamId)
+        return getPlayer(playerId)
     }
 }
