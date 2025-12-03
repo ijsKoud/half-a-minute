@@ -19,6 +19,7 @@ import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.button.StyledButton
 import nl.klrnbk.daan.half_a_minute.presentation.ui.icons.ArrowLeft
+import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.components.GoBackButton
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.create.components.InputForm
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -55,21 +56,7 @@ fun CreateGameScreen(
             verticalArrangement = Arrangement.spacedBy(Dimension.Spacing.base)
         ) {
             InputForm(onSubmit = viewModel::onSubmit)
-
-            StyledButton(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = navigateToLanding,
-                style = AppTheme.colors.button.secondary,
-                textOnly = true
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(Dimension.Spacing.base),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(imageVector = ArrowLeft, contentDescription = "Arrow pointing left")
-                    Text("Go back")
-                }
-            }
+            GoBackButton(onClick = navigateToLanding)
         }
     }
 }
