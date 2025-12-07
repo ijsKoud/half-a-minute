@@ -24,6 +24,9 @@ fun NavGraphBuilder.gameInviteScreen(navController: NavController) {
         route = GameInviteRoute
     ) {
         val args = GameInviteArgs(it.savedStateHandle)
-        GameInviteScreen(gameId = args.gameId)
+        GameInviteScreen(
+            gameId = args.gameId,
+            navigateBack = navController::popBackStack
+        )
     }
 }
