@@ -7,12 +7,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.button.StyledButton
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.input.TextInput
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun InputForm(onSubmit: (String) -> Unit, viewModel: FriendNameInputViewModel = koinViewModel()) {
+fun InputForm(
+    onSubmit: (String) -> Unit,
+    disabled: Boolean,
+    viewModel: FriendNameInputViewModel = koinViewModel()
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     fun preOnSubmit() {
@@ -31,8 +36,9 @@ fun InputForm(onSubmit: (String) -> Unit, viewModel: FriendNameInputViewModel = 
 
         StyledButton(
             modifier = Modifier.fillMaxWidth(),
-            disabled = state.error != null || state.value.isEmpty(),
-            onClick = ::preOnSubmit
+            disabled = disabled || state.error != null || state.value.isEmpty(),
+            onClick = ::preOnSubmit,
+            style = AppTheme.colors.button.secondary
         ) {
             Text("Add friend")
         }
