@@ -3,6 +3,7 @@ package nl.klrnbk.daan.half_a_minute.data.components.room.repository
 import kotlin.uuid.Uuid
 import nl.klrnbk.daan.half_a_minute.data.components.room.AppDatabase
 import nl.klrnbk.daan.half_a_minute.data.components.room.dao.PlayerDao
+import nl.klrnbk.daan.half_a_minute.data.components.room.entity.PlayerEntity
 import nl.klrnbk.daan.half_a_minute.data.components.room.mapper.PlayerMapper
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Player
 import nl.klrnbk.daan.half_a_minute.domain.game.repository.PlayerRepository
@@ -20,9 +21,11 @@ class PlayerDataRepository(
 
     override suspend fun removePlayer(id: Uuid) = playerDao.deleteById(id)
 
-    override suspend fun createPlayer(name: String): Player {
-        val entity = Player(id = Uuid.random(), name = name)
-        return entity
+    override suspend fun createPlayer(name: String, gameId: Uuid): Player {
+        val entity = PlayerEntity(id = Uuid.random(), name = name, gameId = gameId, teamId = null)
+        playerDao.insert(entity)
+
+        return playerMapper.map(entity)!!
     }
 
     override suspend fun addPlayerToTeam(playerId: Uuid, teamId: Uuid): Player? {

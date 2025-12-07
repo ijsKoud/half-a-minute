@@ -8,7 +8,6 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.button.StyledButton
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.input.TextInput
-import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.create.components.HostNameInputViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
