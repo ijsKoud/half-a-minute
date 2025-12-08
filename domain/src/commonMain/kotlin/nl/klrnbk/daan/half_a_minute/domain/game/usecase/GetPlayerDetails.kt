@@ -7,5 +7,10 @@ import org.koin.core.annotation.Factory
 
 @Factory
 class GetPlayerDetails(private val playerRepository: PlayerRepository) {
-    suspend operator fun invoke(id: Uuid): Player? = playerRepository.getPlayer(id)
+    suspend operator fun invoke(id: Uuid): Result<Player> = runCatching {
+        val player = playerRepository.getPlayer(id).getOrThrow()
+            ?: throw Error("No player found with id $id")
+
+        player
+    }
 }
