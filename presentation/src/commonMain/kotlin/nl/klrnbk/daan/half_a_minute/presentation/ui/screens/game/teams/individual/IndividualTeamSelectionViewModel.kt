@@ -6,14 +6,11 @@ import kotlin.math.floor
 import kotlin.uuid.Uuid
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Game
-import nl.klrnbk.daan.half_a_minute.domain.game.model.Player
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Team
 import nl.klrnbk.daan.half_a_minute.domain.game.model.TeamName
 import nl.klrnbk.daan.half_a_minute.domain.game.usecase.AddPlayerToTeam
-import nl.klrnbk.daan.half_a_minute.domain.game.usecase.ClearTeamSelection
 import nl.klrnbk.daan.half_a_minute.domain.game.usecase.CreateTeam
 import nl.klrnbk.daan.half_a_minute.domain.game.usecase.GetGameDetails
 import org.koin.android.annotation.KoinViewModel

@@ -8,5 +8,5 @@ class IntListConverter {
 
     @TypeConverter
     fun toIntList(data: String): List<Int> =
-        listOf(*data.split(",").map { it.toInt() }.toTypedArray())
+        listOf(*data.split(",").mapNotNull { it.toIntOrNull() }.toTypedArray())
 }
