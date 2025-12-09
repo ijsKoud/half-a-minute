@@ -5,10 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredWidthIn
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Scaffold
@@ -22,15 +20,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import nl.klrnbk.daan.half_a_minute.data.context.ContextWrapper
 import nl.klrnbk.daan.half_a_minute.data.di.contextModule
-import nl.klrnbk.daan.half_a_minute.presentation.constants.getTabBarEntries
 import nl.klrnbk.daan.half_a_minute.presentation.di.AppModule
 import nl.klrnbk.daan.half_a_minute.presentation.navigation.LandingRoute
 import nl.klrnbk.daan.half_a_minute.presentation.navigation.createGameScreen
+import nl.klrnbk.daan.half_a_minute.presentation.navigation.gameIndividualTeamSelection
 import nl.klrnbk.daan.half_a_minute.presentation.navigation.gameInviteScreen
+import nl.klrnbk.daan.half_a_minute.presentation.navigation.gameTeamSelectionScreen
 import nl.klrnbk.daan.half_a_minute.presentation.navigation.landingScreen
 import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
-import nl.klrnbk.daan.half_a_minute.presentation.ui.components.TabBar
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.navigation.PageNavigation
 import org.koin.compose.KoinApplication
 import org.koin.ksp.generated.module
@@ -72,8 +70,12 @@ fun App(
                         startDestination = LandingRoute
                     ) {
                         landingScreen(navController)
+
+                        // Game Routes
                         createGameScreen(navController)
                         gameInviteScreen(navController)
+                        gameTeamSelectionScreen(navController)
+                        gameIndividualTeamSelection(navController)
                     }
                 }
             }

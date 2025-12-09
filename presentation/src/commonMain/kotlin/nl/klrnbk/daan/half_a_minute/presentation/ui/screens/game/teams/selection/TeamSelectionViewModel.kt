@@ -5,22 +5,29 @@ import androidx.lifecycle.viewModelScope
 import kotlin.uuid.Uuid
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Player
+import nl.klrnbk.daan.half_a_minute.domain.game.model.TeamName
 import nl.klrnbk.daan.half_a_minute.domain.game.usecase.GetPlayerDetails
 import nl.klrnbk.daan.half_a_minute.presentation.state.DisplayState
 import nl.klrnbk.daan.half_a_minute.presentation.state.ErrorDisplayState
 import nl.klrnbk.daan.half_a_minute.presentation.state.ErrorState
 import nl.klrnbk.daan.half_a_minute.presentation.state.LoadingState
 import nl.klrnbk.daan.half_a_minute.presentation.state.ResultState
+import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.teams.selection.model.TeamState
 import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
-class TeamSelectionScreenViewModel(private val getPlayerDetails: GetPlayerDetails) : ViewModel() {
+class TeamSelectionViewModel(private val getPlayerDetails: GetPlayerDetails) : ViewModel() {
     var navigateHome: () -> Unit = {}
+    var isTeamDisabled: (TeamName) -> Boolean = { false }
 
     private val _playerMutableState = MutableStateFlow<DisplayState<Player>>(LoadingState())
     val playerState = _playerMutableState.asStateFlow()
+
+    private val _teamsMutableState = MutableStateFlow<List<TeamState>>(emptyList())
+    val teamsState = _teamsMutableState.asStateFlow()
 
     fun loadPlayerDetails(id: Uuid) {
         viewModelScope.launch {
@@ -36,5 +43,14 @@ class TeamSelectionScreenViewModel(private val getPlayerDetails: GetPlayerDetail
                 }
             )
         }
+    }
+
+    fun setMaxAmountOfTeams(amount: Int) {
+        val teamNames = TeamName.entries.take(amount)
+        _teamsMutableState.tryEmit(teamNames.map { TeamState(name = it, disabled = false) })
+    }
+
+    fun updateTeams() = _teamsMutableState.update {
+        it.map { team -> TeamState(name = team.name, disabled = isTeamDisabled(team.name)) }
     }
 }

@@ -18,7 +18,7 @@ interface PlayerDao {
 
     @Transaction
     @Query("UPDATE player SET teamId = :teamId WHERE player.id = :playerId")
-    suspend fun addPlayerToTeam(playerId: Uuid, teamId: Uuid)
+    suspend fun addPlayerToTeam(playerId: Uuid, teamId: Uuid?)
 
     @Transaction
     @Query("DELETE FROM player WHERE player.id = :id")

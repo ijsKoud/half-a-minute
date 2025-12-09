@@ -30,6 +30,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun GameInviteScreen(
     gameId: Uuid,
     navigateBack: () -> Unit,
+    navigateToTeamSelection: () -> Unit,
     viewModel: GameInviteViewModel = koinViewModel()
 ) {
     LaunchedEffect(navigateBack) {
@@ -84,7 +85,7 @@ fun GameInviteScreen(
             players = gameState!!.players,
             isDisabled = { it == gameState!!.host?.id },
             onDelete = viewModel::removePlayer,
-            onSubmit = {}
+            onSubmit = navigateToTeamSelection
         )
     }
 }

@@ -8,7 +8,7 @@ import kotlin.uuid.Uuid
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.invite.GameInviteScreen
 
 private const val GameIdArg = "gameId"
-const val GameInviteRoute = "/invite/{$GameIdArg}"
+const val GameInviteRoute = "/game/{$GameIdArg}/invite"
 
 internal class GameInviteArgs(val gameId: Uuid) {
     constructor(savedStateHandle: SavedStateHandle) :
@@ -26,7 +26,8 @@ fun NavGraphBuilder.gameInviteScreen(navController: NavController) {
         val args = GameInviteArgs(it.savedStateHandle)
         GameInviteScreen(
             gameId = args.gameId,
-            navigateBack = navController::popBackStack
+            navigateBack = navController::popBackStack,
+            navigateToTeamSelection = { navController.navigateToGameTeamSelection(args.gameId) }
         )
     }
 }

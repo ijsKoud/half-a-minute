@@ -3,10 +3,7 @@ package nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.teams.selectio
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -28,6 +25,7 @@ import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.button.StyledButton
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.components.GoBackButton
+import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.teams.selection.model.TeamState
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -35,20 +33,32 @@ fun TeamSelectionScreen(
     navigateBack: () -> Unit,
     navigateHome: () -> Unit,
     onSubmit: (playerId: Uuid, teamName: TeamName) -> Unit,
+    isTeamDisabled: (TeamName) -> Boolean,
     playerId: Uuid,
-    viewModel: TeamSelectionScreenViewModel = koinViewModel()
+    maxAmountOfTeams: Int,
+    viewModel: TeamSelectionViewModel = koinViewModel()
 ) {
     LaunchedEffect(playerId) {
         viewModel.loadPlayerDetails(playerId)
+        viewModel.updateTeams()
+
         viewModel.navigateHome = navigateHome
     }
 
+    LaunchedEffect(maxAmountOfTeams) {
+        viewModel.setMaxAmountOfTeams(maxAmountOfTeams)
+        viewModel.isTeamDisabled = isTeamDisabled
+    }
+
     val playerState by viewModel.playerState.collectAsState()
+    val teamsState by viewModel.teamsState.collectAsState()
+
     when (val state = playerState) {
         is ResultState -> TeamSelectionScreenContent(
             navigateBack = navigateBack,
             onSubmit = onSubmit,
-            player = state.result
+            player = state.result,
+            teams = teamsState
         )
 
         is LoadingState -> null
@@ -60,6 +70,7 @@ fun TeamSelectionScreen(
 @Composable
 private fun TeamSelectionScreenContent(
     player: Player,
+    teams: List<TeamState>,
     navigateBack: () -> Unit,
     onSubmit: (playerId: Uuid, teamName: TeamName) -> Unit
 ) {
@@ -97,12 +108,13 @@ private fun TeamSelectionScreenContent(
         Column(
             verticalArrangement = Arrangement.spacedBy(Dimension.Spacing.small * 2)
         ) {
-            TeamName.entries.map {
+            teams.map {
                 StyledButton(
+                    disabled = it.disabled,
                     modifier = Modifier.fillMaxWidth(),
-                    onClick = { onSubmit(player.id, it) }
+                    onClick = { onSubmit(player.id, it.name) }
                 ) {
-                    Text(it.name)
+                    Text(it.name.name)
                 }
             }
         }
