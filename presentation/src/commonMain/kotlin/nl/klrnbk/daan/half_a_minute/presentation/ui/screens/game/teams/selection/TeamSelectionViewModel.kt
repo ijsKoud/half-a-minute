@@ -19,7 +19,7 @@ import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.teams.selection
 import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
-class TeamSelectionScreenViewModel(private val getPlayerDetails: GetPlayerDetails) : ViewModel() {
+class TeamSelectionViewModel(private val getPlayerDetails: GetPlayerDetails) : ViewModel() {
     var navigateHome: () -> Unit = {}
     var isTeamDisabled: (TeamName) -> Boolean = { false }
 

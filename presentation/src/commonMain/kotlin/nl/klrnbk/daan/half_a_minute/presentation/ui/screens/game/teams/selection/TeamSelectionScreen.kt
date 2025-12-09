@@ -36,7 +36,7 @@ fun TeamSelectionScreen(
     isTeamDisabled: (TeamName) -> Boolean,
     playerId: Uuid,
     maxAmountOfTeams: Int,
-    viewModel: TeamSelectionScreenViewModel = koinViewModel()
+    viewModel: TeamSelectionViewModel = koinViewModel()
 ) {
     LaunchedEffect(playerId) {
         viewModel.loadPlayerDetails(playerId)
