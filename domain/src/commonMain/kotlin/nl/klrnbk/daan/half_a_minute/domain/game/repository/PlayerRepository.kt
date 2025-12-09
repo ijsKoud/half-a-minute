@@ -8,4 +8,5 @@ interface PlayerRepository {
     suspend fun removePlayer(id: Uuid)
     suspend fun createPlayer(name: String, gameId: Uuid): Player
     suspend fun addPlayerToTeam(playerId: Uuid, teamId: Uuid): Player?
+    suspend fun clearPlayerTeamSelection(playerId: Uuid)
 }

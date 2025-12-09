@@ -31,4 +31,7 @@ class PlayerDataRepository(
         playerDao.addPlayerToTeam(playerId, teamId)
         return getPlayer(playerId).getOrNull()
     }
+
+    override suspend fun clearPlayerTeamSelection(playerId: Uuid) =
+        playerDao.addPlayerToTeam(playerId, null)
 }
