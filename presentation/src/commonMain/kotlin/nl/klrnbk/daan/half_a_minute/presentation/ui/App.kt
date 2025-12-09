@@ -26,6 +26,7 @@ import nl.klrnbk.daan.half_a_minute.presentation.constants.getTabBarEntries
 import nl.klrnbk.daan.half_a_minute.presentation.di.AppModule
 import nl.klrnbk.daan.half_a_minute.presentation.navigation.LandingRoute
 import nl.klrnbk.daan.half_a_minute.presentation.navigation.createGameScreen
+import nl.klrnbk.daan.half_a_minute.presentation.navigation.gameIndividualTeamSelection
 import nl.klrnbk.daan.half_a_minute.presentation.navigation.gameInviteScreen
 import nl.klrnbk.daan.half_a_minute.presentation.navigation.gameTeamSelectionScreen
 import nl.klrnbk.daan.half_a_minute.presentation.navigation.landingScreen
@@ -78,6 +79,7 @@ fun App(
                         createGameScreen(navController)
                         gameInviteScreen(navController)
                         gameTeamSelectionScreen(navController)
+                        gameIndividualTeamSelection(navController)
                     }
                 }
             }
