@@ -17,34 +17,31 @@ data class AppColors(
     val text: TextColors,
     val input: InputsGroup,
     val button: ButtonsGroup,
+    val dialog: DialogGroup
 )
 
 @Immutable
-data class TextColors(
-    val base: Color,
+data class TextColors(val base: Color)
+
+@Immutable
+data class DialogGroup(
+    val background: InteractionColors,
+    val actions: InteractionColors,
+    val text: InteractionColors
 )
 
 @Immutable
-data class InputsGroup(
-    val default: InteractionStyle,
-    val danger: InteractionStyle
-)
+data class InputsGroup(val default: InteractionStyle, val danger: InteractionStyle)
 
 @Immutable
 data class ButtonsGroup(
     val primary: InteractionStyle,
     val secondary: InteractionStyle,
-    val danger: InteractionStyle,
+    val danger: InteractionStyle
 )
 
 @Immutable
-data class InteractionStyle(
-    val background: InteractionColors,
-    val text: InteractionColors
-)
+data class InteractionStyle(val background: InteractionColors, val text: InteractionColors)
 
 @Immutable
-data class InteractionColors(
-    val base: Color,
-    val muted: Color
-)
+data class InteractionColors(val base: Color, val muted: Color)
