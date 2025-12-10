@@ -9,5 +9,13 @@ data class AppTypography(
     val body: TextStyle = TextStyle.Default,
     val button: TextStyle = TextStyle.Default,
     val input: TextStyle = TextStyle.Default,
-    val inputSupportMessage: TextStyle = TextStyle.Default
+    val inputSupportMessage: TextStyle = TextStyle.Default,
+    val dialog: DialogTypography = DialogTypography()
+)
+
+@Immutable
+data class DialogTypography(
+    val title: TextStyle = TextStyle.Default,
+    val description: TextStyle = TextStyle.Default,
+    val action: TextStyle = TextStyle.Default
 )

@@ -4,8 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.definition.AppTypography
+import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.definition.DialogTypography
 import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.source.fonts.interFontFamily
 
 internal val LocalTypography = staticCompositionLocalOf { AppTypography() }
@@ -37,5 +39,19 @@ fun appTypographies() = AppTypography(
         fontFamily = interFontFamily(),
         fontWeight = FontWeight.Normal,
         fontSize = 10.sp
+    ),
+    dialog = DialogTypography(
+        title = TextStyle(
+            fontFamily = interFontFamily(),
+            fontWeight = FontWeight.Medium,
+            fontSize = 24.sp,
+            lineHeight = 32.sp
+        ),
+        description = TextStyle(
+            fontFamily = interFontFamily(),
+            fontWeight = FontWeight.Normal,
+            fontSize = 14.sp,
+            lineHeight = 20.sp
+        )
     )
 )
