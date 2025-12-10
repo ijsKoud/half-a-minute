@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.definition.AppTypography
 import nl.klrnbk.daan.half_a_minute.presentation.theme.typography.definition.DialogTypography
