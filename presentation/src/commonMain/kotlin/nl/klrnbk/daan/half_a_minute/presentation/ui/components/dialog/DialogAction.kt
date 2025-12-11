@@ -9,5 +9,6 @@ data class DialogAction(
 
 enum class DialogActionType {
     SUBMIT,
-    DISMISS
+    DISMISS,
+    DESTRUCTIVE
 }

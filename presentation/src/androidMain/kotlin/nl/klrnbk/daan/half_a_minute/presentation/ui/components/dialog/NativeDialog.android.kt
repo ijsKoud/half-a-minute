@@ -20,7 +20,7 @@ import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
 
 @Composable
-actual fun NativeDialog(title: String?, description: String?, actions: List<DialogAction>) {
+actual fun NativeDialog(title: String, description: String?, actions: List<DialogAction>) {
     val dimensions = Dimension.Dialog.Android
     val dismissAction = actions.firstOrNull { action ->
         action.type == DialogActionType.DISMISS
@@ -54,18 +54,16 @@ actual fun NativeDialog(title: String?, description: String?, actions: List<Dial
 }
 
 @Composable
-private fun DialogHeader(title: String?, description: String?) {
+private fun DialogHeader(title: String, description: String?) {
     val dimensions = Dimension.Dialog.Android
 
     Column(
         verticalArrangement = Arrangement.spacedBy(dimensions.contentSpacing)
     ) {
-        title?.let {
-            Text(
-                text = it,
-                style = AppTheme.typography.dialog.title
-            )
-        }
+        Text(
+            text = title,
+            style = AppTheme.typography.dialog.title
+        )
 
         description?.let {
             Text(
@@ -83,18 +81,28 @@ private fun DialogActions(actions: List<DialogAction>) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(dimensions.buttonSpacing)
     ) {
-        actions.map {
-            TextButton(
-                onClick = it.action,
-                colors = ButtonColors(
-                    containerColor = Color.Transparent,
-                    disabledContainerColor = Color.Transparent,
-                    contentColor = AppTheme.colors.dialog.actions.base,
-                    disabledContentColor = AppTheme.colors.dialog.actions.muted
-                )
-            ) {
-                Text(it.name)
-            }
-        }
+        actions.map { DialogActionButton(it) }
+    }
+}
+
+@Composable
+private fun DialogActionButton(action: DialogAction) {
+    val dangerTextColor = AppTheme.colors.danger
+    val defaultTextColors = AppTheme.colors.dialog.text
+
+    val isDestructive = action.type === DialogActionType.DESTRUCTIVE
+    val contentColor = if (isDestructive) dangerTextColor else defaultTextColors.base
+    val disabledContentColor = if (isDestructive) dangerTextColor else defaultTextColors.muted
+
+    TextButton(
+        onClick = action.action,
+        colors = ButtonColors(
+            containerColor = Color.Transparent,
+            disabledContainerColor = Color.Transparent,
+            contentColor = contentColor,
+            disabledContentColor = disabledContentColor
+        )
+    ) {
+        Text(action.name)
     }
 }
