@@ -3,6 +3,7 @@ package nl.klrnbk.daan.half_a_minute.presentation.theme.color.applied
 import androidx.compose.runtime.staticCompositionLocalOf
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.AppColors
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.ButtonsGroup
+import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.DialogGroup
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.InputsGroup
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.InteractionColors
 import nl.klrnbk.daan.half_a_minute.presentation.theme.color.definition.InteractionStyle
@@ -83,6 +84,20 @@ internal val appColors = appColorGroups.map { (name, colors) ->
                     base = colors.white,
                     muted = colors.white.copy(alpha = 0.5F)
                 )
+            )
+        ),
+        dialog = DialogGroup(
+            background = InteractionColors(
+                base = colors.secondary,
+                muted = colors.secondary.copy(alpha = 0.4F)
+            ),
+            text = InteractionColors(
+                base = colors.white,
+                muted = colors.white.copy(alpha = 0.5F)
+            ),
+            actions = InteractionColors(
+                base = colors.tertiary,
+                muted = colors.tertiary.copy(alpha = 0.5F)
             )
         )
     )

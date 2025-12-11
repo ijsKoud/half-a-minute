@@ -26,6 +26,16 @@ object Dimension {
 
     object BorderRadius {
         val medium = 12.dp
+        val large = 16.dp
+    }
+
+    object Dialog {
+        object Android {
+            val borderRadius = 28.dp
+            val padding = 24.dp
+            val contentSpacing = 16.dp
+            val buttonSpacing = 8.dp
+        }
     }
 
     object Button {

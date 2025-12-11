@@ -22,7 +22,12 @@ fun interFontFamily() = FontFamily(
         weight = FontWeight.Bold
     ),
     Font(
+        resource = Res.font.inter_vf,
+        style = FontStyle.Normal,
+        weight = FontWeight.Medium
+    ),
+    Font(
         resource = Res.font.inter_italic_vf,
         style = FontStyle.Italic
-    ),
+    )
 )
