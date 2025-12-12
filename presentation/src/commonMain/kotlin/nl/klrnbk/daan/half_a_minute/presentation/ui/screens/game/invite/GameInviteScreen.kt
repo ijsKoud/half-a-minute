@@ -22,8 +22,8 @@ import kotlin.uuid.Uuid
 import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.components.GoBackButton
-import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.invite.components.InputForm
-import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.invite.components.PlayerListForm
+import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.invite.components.form.InputForm
+import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.invite.components.list.PlayerListForm
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
