@@ -24,8 +24,10 @@ import nl.klrnbk.daan.half_a_minute.presentation.state.ResultState
 import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.button.StyledButton
+import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.error.ErrorScreen
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.components.GoBackButton
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.teams.selection.model.TeamState
+import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.loading.LoadingScreen
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -61,9 +63,9 @@ fun TeamSelectionScreen(
             teams = teamsState
         )
 
-        is LoadingState -> null
+        is LoadingState -> LoadingScreen()
 
-        is ErrorState -> null
+        is ErrorState -> ErrorScreen(state.error)
     }
 }
 
