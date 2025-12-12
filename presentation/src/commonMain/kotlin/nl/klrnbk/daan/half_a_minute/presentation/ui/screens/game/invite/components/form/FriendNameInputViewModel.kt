@@ -1,4 +1,4 @@
-package nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.invite.components
+package nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.invite.components.form
 
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.input.TextInputViewModel
 import org.koin.android.annotation.KoinViewModel

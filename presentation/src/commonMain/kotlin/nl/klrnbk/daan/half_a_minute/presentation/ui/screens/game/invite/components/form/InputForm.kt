@@ -1,4 +1,4 @@
-package nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.invite.components
+package nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.invite.components.form
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
