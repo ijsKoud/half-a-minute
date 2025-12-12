@@ -33,7 +33,8 @@ fun PlayerListForm(
         )
 
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(0.dp)
+            verticalArrangement = Arrangement.spacedBy(0.dp),
+            modifier = Modifier.weight(1F)
         ) {
             items(items = players, key = { it.id }) { player ->
                 PlayerListEntry(
