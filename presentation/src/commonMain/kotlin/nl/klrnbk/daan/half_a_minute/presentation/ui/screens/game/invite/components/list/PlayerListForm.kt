@@ -3,6 +3,8 @@ package nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.invite.compone
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -30,15 +32,15 @@ fun PlayerListForm(
             style = AppTheme.typography.body
         )
 
-        Column(
+        LazyColumn(
             verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
-            players.map {
+            items(items = players, key = { it.id }) { player ->
                 PlayerListEntry(
-                    id = it.id,
-                    name = it.name,
+                    id = player.id,
+                    name = player.name,
                     onDeleteClick = onDelete,
-                    disabled = isDisabled(it.id)
+                    disabled = isDisabled(player.id)
                 )
             }
         }
