@@ -4,9 +4,11 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -25,7 +27,12 @@ import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun TeamListHeader(teamName: String, isExpanded: Boolean, onHeaderClick: () -> Unit) {
+fun TeamListHeader(
+    teamName: String,
+    teamSize: Int,
+    isExpanded: Boolean,
+    onHeaderClick: () -> Unit
+) {
     val contentDescription = "${if (isExpanded) "Close" else "Open"} the player list of team $teamName"
     val degrees by animateFloatAsState(
         if (isExpanded) HEADER_OPEN_STATE_DEGREES else HEADER_CLOSED_STATE_DEGREES
@@ -47,11 +54,29 @@ fun TeamListHeader(teamName: String, isExpanded: Boolean, onHeaderClick: () -> U
             fontWeight = FontWeight.Bold,
             color = AppTheme.colors.tertiary
         )
-        Icon(
-            painterResource(Res.drawable.ic_arrow_head_left),
-            contentDescription = contentDescription,
-            modifier = Modifier.rotate(degrees),
-            tint = AppTheme.colors.tertiary
-        )
+
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(Dimension.Spacing.medium)
+        ) {
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(AppTheme.colors.tertiary)
+                    .size(24.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = teamSize.toString(),
+                    color = AppTheme.colors.text.base
+                )
+            }
+
+            Icon(
+                painterResource(Res.drawable.ic_arrow_head_left),
+                contentDescription = contentDescription,
+                modifier = Modifier.rotate(degrees),
+                tint = AppTheme.colors.tertiary
+            )
+        }
     }
 }

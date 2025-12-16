@@ -31,6 +31,7 @@ fun TeamList(editTeamSelection: (Uuid) -> Unit, teams: List<Team>) {
             Column {
                 TeamListHeader(
                     teamName = team.name.name,
+                    teamSize = team.players.size,
                     isExpanded = expanded,
                     onHeaderClick = {
                         expanded =
