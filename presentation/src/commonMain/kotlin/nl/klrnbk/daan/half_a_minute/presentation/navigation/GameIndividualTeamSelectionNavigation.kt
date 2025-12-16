@@ -37,7 +37,7 @@ fun NavGraphBuilder.gameIndividualTeamSelection(navController: NavController) {
             playerId = args.playerId,
             navigateBack = navController::popBackStack,
             navigateHome = navController::navigateToLanding,
-            navigateToReview = {}
+            navigateToReview = { navController.navigateToGameOverview(args.gameId) }
         )
     }
 }
