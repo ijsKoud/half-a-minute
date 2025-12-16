@@ -14,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,6 +34,9 @@ fun TeamListHeader(
     isExpanded: Boolean,
     onHeaderClick: () -> Unit
 ) {
+    val isValidTeamSize = remember { teamSize > 1 }
+    val accentColor = if (isValidTeamSize) AppTheme.colors.tertiary else AppTheme.colors.danger
+
     val contentDescription = "${if (isExpanded) "Close" else "Open"} the player list of team $teamName"
     val degrees by animateFloatAsState(
         if (isExpanded) HEADER_OPEN_STATE_DEGREES else HEADER_CLOSED_STATE_DEGREES
@@ -52,7 +56,7 @@ fun TeamListHeader(
             "Team $teamName",
             style = AppTheme.typography.body,
             fontWeight = FontWeight.Bold,
-            color = AppTheme.colors.tertiary
+            color = accentColor
         )
 
         Row(
@@ -61,7 +65,7 @@ fun TeamListHeader(
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(999.dp))
-                    .background(AppTheme.colors.tertiary)
+                    .background(accentColor)
                     .size(24.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -75,7 +79,7 @@ fun TeamListHeader(
                 painterResource(Res.drawable.ic_arrow_head_left),
                 contentDescription = contentDescription,
                 modifier = Modifier.rotate(degrees),
-                tint = AppTheme.colors.tertiary
+                tint = accentColor
             )
         }
     }

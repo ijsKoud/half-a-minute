@@ -22,6 +22,9 @@ class GameOverviewViewModel(private val getGameDetails: GetGameDetails) : ViewMo
     private val _gameState = MutableStateFlow<DisplayState<Game>>(LoadingState())
     val gameState = _gameState.asStateFlow()
 
+    private val _errorState = MutableStateFlow("")
+    val errorState = _errorState.asStateFlow()
+
     fun loadGameDetails(gameId: Uuid) {
         viewModelScope.launch {
             val game = getGameDetails(gameId)
@@ -33,6 +36,15 @@ class GameOverviewViewModel(private val getGameDetails: GetGameDetails) : ViewMo
             }
 
             _gameState.tryEmit(ResultState(game))
+            runValidation(game)
+        }
+    }
+
+    private fun runValidation(game: Game) {
+        val containsInvalidTeamSizeError = game.teams.any { it.players.size <= 1 }
+        if (containsInvalidTeamSizeError) {
+            _errorState.tryEmit("Every team should have at least two players")
+            return
         }
     }
 }
