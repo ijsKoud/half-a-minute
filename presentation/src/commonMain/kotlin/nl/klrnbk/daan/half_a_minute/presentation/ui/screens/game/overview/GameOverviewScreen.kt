@@ -21,6 +21,7 @@ import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.button.StyledButton
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.error.ErrorScreen
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.overview.components.GameOverviewHeader
+import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.overview.components.settings.GameSettingsForm
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.overview.components.team.TeamList
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.loading.LoadingScreen
 import org.koin.compose.viewmodel.koinViewModel
@@ -69,24 +70,6 @@ fun GameOverviewScreenContent(
             teams = game.teams
         )
 
-        Column(
-            verticalArrangement = Arrangement.spacedBy(Dimension.Spacing.small)
-        ) {
-            if (validationError.isNotEmpty()) {
-                Text(
-                    text = validationError,
-                    color = AppTheme.colors.danger
-                )
-            }
-
-            StyledButton(
-                modifier = Modifier.fillMaxWidth(),
-                disabled = validationError.isNotEmpty(),
-                style = AppTheme.colors.button.secondary,
-                onClick = {}
-            ) {
-                Text("Let the game begin")
-            }
-        }
+        GameSettingsForm(validationError = validationError)
     }
 }
