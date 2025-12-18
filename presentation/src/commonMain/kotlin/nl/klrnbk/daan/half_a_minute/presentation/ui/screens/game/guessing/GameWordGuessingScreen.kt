@@ -14,8 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
-import nl.klrnbk.daan.half_a_minute.presentation.ui.components.button.StyledButton
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.guessing.components.GuessableWordButton
+import nl.klrnbk.daan.half_a_minute.presentation.ui.utils.OnLifecycleEvent
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -24,12 +24,23 @@ fun GameWordGuessingScreen(
     onEndOfRound: (guessedWords: List<String>) -> Unit,
     viewModel: GameWordGuessingViewModel = koinViewModel()
 ) {
+    OnLifecycleEvent(
+        onCreate = { viewModel.startCountdown() }
+    )
+
     val guessedWordStates by viewModel.guessedWordsStates.collectAsState()
+    val countdownState by viewModel.countdownState.collectAsState()
 
     Column(
         verticalArrangement = Arrangement.spacedBy(Dimension.Spacing.xlarge),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(
+            text = countdownState.toString(),
+            style = AppTheme.typography.h1,
+            color = AppTheme.colors.text.base
+        )
+
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(Dimension.Spacing.small),
             modifier = Modifier.fillMaxWidth()
