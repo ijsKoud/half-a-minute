@@ -25,7 +25,7 @@ struct SelectMenuView: View {
         colors: SelectMenuColors,
         options: [SelectMenuOption<AnyObject>],
         selected: SelectMenuOption<AnyObject>,
-        onSelect: @escaping (SelectMenuOption<AnyObject>) -> Void,
+        onSelect: @escaping (SelectMenuOption<AnyObject>) -> Void
     ) {
         self.options = options
         self.selected = selected

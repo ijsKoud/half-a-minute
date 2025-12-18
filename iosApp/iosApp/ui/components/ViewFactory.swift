@@ -15,14 +15,14 @@ class ViewFactory: NativeViewFactory {
         colors: SelectMenuColors,
         options: [SelectMenuOption<AnyObject>],
         selected: SelectMenuOption<AnyObject>,
-        onSelect: @escaping (SelectMenuOption<AnyObject>) -> Void,
+        onSelect: @escaping (SelectMenuOption<AnyObject>) -> Void
     ) -> UIViewController {
         let selectMenuView = SelectMenuView(
             title: title,
             colors: colors,
             options: options,
             selected: selected,
-            onSelect: onSelect,
+            onSelect: onSelect
         )
         
         let controller = UIHostingController(rootView: selectMenuView)

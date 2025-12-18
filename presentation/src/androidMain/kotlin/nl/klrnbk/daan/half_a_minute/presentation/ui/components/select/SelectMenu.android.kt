@@ -28,8 +28,8 @@ actual fun <T> SelectMenu(
 ) {
     var isExpanded by remember { mutableStateOf(false) }
     ExposedDropdownMenuBox(
-        expanded = isExpanded,
-        onExpandedChange = { isExpanded = isExpanded.not() }
+        onExpandedChange = { isExpanded = isExpanded.not() },
+        expanded = isExpanded
     ) {
         TextInput(
             modifier = Modifier

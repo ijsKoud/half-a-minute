@@ -15,9 +15,6 @@ class GameSettingsFormViewModel : ViewModel() {
     private val wordsPerRoundMutableState = MutableStateFlow(wordsPerRoundDefaultOption)
     val wordsPerRoundState = wordsPerRoundMutableState.asStateFlow()
 
-    private val categoriesMutableState = MutableStateFlow(gamePointsOptions[0])
-    val categoriesState = categoriesMutableState.asStateFlow()
-
     fun updatePointsGoalOption(option: SelectMenuOption<Int>) =
         pointsGoalMutableState.update { option }
     fun updateWordsPerRoundOption(option: SelectMenuOption<Int>) =
