@@ -13,6 +13,7 @@ fun TeamSelectionControllerScreen(
     gameId: Uuid,
     navigateBack: () -> Unit,
     navigateHome: () -> Unit,
+    navigateToOverview: () -> Unit,
     viewModel: TeamSelectionControllerViewModel = koinViewModel()
 ) {
     OnLifecycleEvent(
@@ -21,7 +22,7 @@ fun TeamSelectionControllerScreen(
             viewModel.clearSelection(gameId)
 
             viewModel.navigateBack = navigateBack
-            viewModel.navigateForward = { println("completed") }
+            viewModel.navigateForward = navigateToOverview
         }
     )
 

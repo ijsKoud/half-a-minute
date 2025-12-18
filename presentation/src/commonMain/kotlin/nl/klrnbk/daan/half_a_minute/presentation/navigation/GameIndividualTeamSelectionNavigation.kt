@@ -10,7 +10,7 @@ import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.teams.individua
 private const val GameIdArg = "gameId"
 private const val PlayerIdArg = "playerId"
 
-const val GameIndividualTeamSelectionRoute = "/game/{$GameIdArg}/teams/selection/{$PlayerIdArg}"
+const val GameIndividualTeamSelectionRoute = "/game/{$GameIdArg}/teams/selection/player/{$PlayerIdArg}"
 
 internal class GameIndividualTeamSelectionArgs(val gameId: Uuid, val playerId: Uuid) {
     constructor(savedStateHandle: SavedStateHandle) :
@@ -37,7 +37,7 @@ fun NavGraphBuilder.gameIndividualTeamSelection(navController: NavController) {
             playerId = args.playerId,
             navigateBack = navController::popBackStack,
             navigateHome = navController::navigateToLanding,
-            navigateToReview = {}
+            navigateToReview = { navController.navigateToGameOverview(args.gameId) }
         )
     }
 }

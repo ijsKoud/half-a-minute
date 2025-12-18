@@ -28,7 +28,8 @@ fun NavGraphBuilder.gameTeamSelectionScreen(navController: NavController) {
         TeamSelectionControllerScreen(
             gameId = args.gameId,
             navigateBack = navController::popBackStack,
-            navigateHome = navController::navigateToLanding
+            navigateHome = navController::navigateToLanding,
+            navigateToOverview = { navController.navigateToGameOverview(args.gameId) }
         )
     }
 }
