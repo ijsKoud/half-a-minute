@@ -24,7 +24,7 @@ class ViewFactory: NativeViewFactory {
             selected: selected,
             onSelect: onSelect
         )
-        
+
         let controller = UIHostingController(rootView: selectMenuView)
         controller.view.backgroundColor = .clear
 
