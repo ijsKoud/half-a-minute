@@ -11,11 +11,22 @@ import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
 class GameWordGuessingViewModel : ViewModel() {
-    private val guessedWordsMutableStates = MutableStateFlow<List<String>>(listOf())
-    val guessedWordsStates = guessedWordsMutableStates.asStateFlow()
+    private val guessedWordsMutableState = MutableStateFlow<List<String>>(listOf())
+    val guessedWordsState = guessedWordsMutableState.asStateFlow()
 
     private val countdownMutableState = MutableStateFlow(30)
     val countdownState = countdownMutableState.asStateFlow()
+
+    private val showEndOfRoundDialogMutableState = MutableStateFlow(false)
+    val showEndOfRoundDialogState = showEndOfRoundDialogMutableState.asStateFlow()
+
+    private val wordSelectionTimeMutableState = MutableStateFlow(false)
+    val wordSelectionTimeState = wordSelectionTimeMutableState.asStateFlow()
+
+    fun activateWordSelectionTime() {
+        wordSelectionTimeMutableState.update { true }
+        showEndOfRoundDialogMutableState.update { false }
+    }
 
     fun startCountdown() = viewModelScope.launch {
         delay(1000L)
@@ -23,9 +34,11 @@ class GameWordGuessingViewModel : ViewModel() {
             countdownMutableState.update { it - 1 }
             delay(1000L)
         }
+
+        showEndOfRoundDialogMutableState.update { true }
     }
 
-    fun toggleGuessedWord(guessedWord: String) = guessedWordsMutableStates.update { words ->
+    fun toggleGuessedWord(guessedWord: String) = guessedWordsMutableState.update { words ->
         if (words.contains(guessedWord)) {
             val updatedGuessedWords = words.filterNot { word -> word == guessedWord }
             return@update updatedGuessedWords

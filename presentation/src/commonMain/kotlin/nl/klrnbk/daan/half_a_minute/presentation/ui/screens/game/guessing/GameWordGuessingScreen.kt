@@ -14,7 +14,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
+import nl.klrnbk.daan.half_a_minute.presentation.ui.components.button.StyledButton
+import nl.klrnbk.daan.half_a_minute.presentation.ui.components.dialog.DialogAction
+import nl.klrnbk.daan.half_a_minute.presentation.ui.components.dialog.DialogActionType
+import nl.klrnbk.daan.half_a_minute.presentation.ui.components.dialog.NativeDialog
+import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.guessing.components.GameWordGuessingHeader
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.guessing.components.GuessableWordButton
+import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.guessing.components.GuessableWordsList
 import nl.klrnbk.daan.half_a_minute.presentation.ui.utils.OnLifecycleEvent
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -28,29 +34,49 @@ fun GameWordGuessingScreen(
         onCreate = { viewModel.startCountdown() }
     )
 
-    val guessedWordStates by viewModel.guessedWordsStates.collectAsState()
+    val guessedWordState by viewModel.guessedWordsState.collectAsState()
     val countdownState by viewModel.countdownState.collectAsState()
+
+    val showEndOfRoundDialogState by viewModel.showEndOfRoundDialogState.collectAsState()
+    val wordSelectionTimeState by viewModel.wordSelectionTimeState.collectAsState()
+
+    if (showEndOfRoundDialogState) {
+        NativeDialog(
+            title = "The half a minute is over!",
+            description = "Select the correctly guessed words before moving on to the next round.",
+            actions = listOf(
+                DialogAction(
+                    name = "Continue",
+                    type = DialogActionType.SUBMIT,
+                    action = viewModel::activateWordSelectionTime
+                )
+            )
+        )
+    }
 
     Column(
         verticalArrangement = Arrangement.spacedBy(Dimension.Spacing.xlarge),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = countdownState.toString(),
-            style = AppTheme.typography.h1,
-            color = AppTheme.colors.text.base
+        GameWordGuessingHeader(
+            countdownState = countdownState,
+            wordSelectionTime = wordSelectionTimeState
         )
 
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(Dimension.Spacing.small),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            items(items = words, key = { it }) {
-                GuessableWordButton(
-                    word = it,
-                    guessed = guessedWordStates.contains(it),
-                    toggleGuessedWord = { viewModel.toggleGuessedWord(it) }
-                )
+        GuessableWordsList(
+            words = words,
+            guessedWords = guessedWordState,
+            wordSelectionTime = wordSelectionTimeState,
+            toggleGuessedWord = viewModel::toggleGuessedWord
+        )
+
+        if (wordSelectionTimeState) {
+            StyledButton(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = { onEndOfRound(guessedWordState) },
+                style = AppTheme.colors.button.secondary
+            ) {
+                Text("End this round")
             }
         }
     }
