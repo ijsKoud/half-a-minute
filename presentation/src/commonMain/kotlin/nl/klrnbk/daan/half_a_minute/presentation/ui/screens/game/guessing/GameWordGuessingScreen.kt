@@ -3,11 +3,8 @@ package nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.guessing
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -19,7 +16,6 @@ import nl.klrnbk.daan.half_a_minute.presentation.ui.components.dialog.DialogActi
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.dialog.DialogActionType
 import nl.klrnbk.daan.half_a_minute.presentation.ui.components.dialog.NativeDialog
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.guessing.components.GameWordGuessingHeader
-import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.guessing.components.GuessableWordButton
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.guessing.components.GuessableWordsList
 import nl.klrnbk.daan.half_a_minute.presentation.ui.utils.OnLifecycleEvent
 import org.koin.compose.viewmodel.koinViewModel
