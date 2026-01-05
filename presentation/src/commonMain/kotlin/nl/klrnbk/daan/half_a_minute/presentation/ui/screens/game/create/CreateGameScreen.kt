@@ -2,9 +2,6 @@ package nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.create
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -17,8 +14,6 @@ import androidx.compose.ui.text.withStyle
 import kotlin.uuid.Uuid
 import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
-import nl.klrnbk.daan.half_a_minute.presentation.ui.components.button.StyledButton
-import nl.klrnbk.daan.half_a_minute.presentation.ui.icons.ArrowLeft
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.components.GoBackButton
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.create.components.InputForm
 import org.koin.compose.viewmodel.koinViewModel

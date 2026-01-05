@@ -24,6 +24,11 @@ fun interFontFamily() = FontFamily(
     Font(
         resource = Res.font.inter_vf,
         style = FontStyle.Normal,
+        weight = FontWeight.SemiBold
+    ),
+    Font(
+        resource = Res.font.inter_vf,
+        style = FontStyle.Normal,
         weight = FontWeight.Medium
     ),
     Font(
