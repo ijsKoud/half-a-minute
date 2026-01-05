@@ -6,6 +6,8 @@ import androidx.compose.ui.text.TextStyle
 @Immutable
 data class AppTypography(
     val h1: TextStyle = TextStyle.Default,
+    val h2: TextStyle = TextStyle.Default,
+    val h3: TextStyle = TextStyle.Default,
     val body: TextStyle = TextStyle.Default,
     val button: TextStyle = TextStyle.Default,
     val input: TextStyle = TextStyle.Default,

@@ -19,6 +19,16 @@ fun appTypographies() = AppTypography(
         fontSize = 26.sp,
         lineHeight = 28.sp
     ),
+    h2 = TextStyle(
+        fontFamily = interFontFamily(),
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 20.sp
+    ),
+    h3 = TextStyle(
+        fontFamily = interFontFamily(),
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp
+    ),
     body = TextStyle(
         fontFamily = interFontFamily(),
         fontWeight = FontWeight.Normal,
