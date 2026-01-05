@@ -7,4 +7,5 @@ interface GameRepository {
     suspend fun getGameById(id: Uuid): Game?
     suspend fun createGame(): Game
     suspend fun assignHostToGame(gameId: Uuid, hostId: Uuid): Game?
+    suspend fun updateGameSettings(gameId: Uuid, pointsGoal: Int, wordsPerRound: Int): Game?
 }

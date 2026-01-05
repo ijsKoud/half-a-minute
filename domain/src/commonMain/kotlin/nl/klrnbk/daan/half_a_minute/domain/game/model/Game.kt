@@ -9,6 +9,8 @@ enum class GameStatus {
 
 data class Game(
     val id: Uuid,
+    val pointsGoal: Int,
+    val wordsPerRound: Int,
     val status: GameStatus,
     val host: Player?,
     val teams: List<Team>,

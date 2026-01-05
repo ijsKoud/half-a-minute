@@ -20,4 +20,12 @@ interface GameDao {
     @Transaction
     @Query("UPDATE game SET hostId = :hostId WHERE game.id = :gameId")
     suspend fun assignHostToGameById(gameId: Uuid, hostId: Uuid)
+
+    @Transaction
+    @Query("UPDATE game SET pointsGoal = :pointsGoal WHERE game.id = :gameId")
+    suspend fun updatePointsGoal(gameId: Uuid, pointsGoal: Int)
+
+    @Transaction
+    @Query("UPDATE game SET wordsPerRound = :wordsPerRound WHERE game.id = :gameId")
+    suspend fun updateWordsPerRound(gameId: Uuid, wordsPerRound: Int)
 }

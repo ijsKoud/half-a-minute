@@ -23,7 +23,9 @@ class GameDataRepository(private val gameMapper: GameMapper, private val gameDao
         val gameEntity = GameEntity(
             id = gameId,
             status = GameStatus.ACTIVE,
-            hostId = null
+            hostId = null,
+            pointsGoal = 25,
+            wordsPerRound = 5
         )
 
         gameDao.insert(gameEntity)
@@ -32,6 +34,17 @@ class GameDataRepository(private val gameMapper: GameMapper, private val gameDao
 
     override suspend fun assignHostToGame(gameId: Uuid, hostId: Uuid): Game? {
         gameDao.assignHostToGameById(gameId, hostId)
+        return getGameById(gameId)
+    }
+
+    override suspend fun updateGameSettings(
+        gameId: Uuid,
+        pointsGoal: Int,
+        wordsPerRound: Int
+    ): Game? {
+        gameDao.updatePointsGoal(gameId, pointsGoal)
+        gameDao.updateWordsPerRound(gameId, wordsPerRound)
+
         return getGameById(gameId)
     }
 }
