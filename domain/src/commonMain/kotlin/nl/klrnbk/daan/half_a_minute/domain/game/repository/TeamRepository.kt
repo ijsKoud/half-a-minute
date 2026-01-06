@@ -8,4 +8,5 @@ interface TeamRepository {
     suspend fun getTeamById(id: Uuid): Team?
     suspend fun createTeam(gameId: Uuid, name: TeamName): Team
     suspend fun removeTeam(id: Uuid)
+    suspend fun addPointsToTeam(id: Uuid, points: Int): Team?
 }

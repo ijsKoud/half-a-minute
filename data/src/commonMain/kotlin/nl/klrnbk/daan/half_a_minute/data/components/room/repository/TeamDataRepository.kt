@@ -32,4 +32,12 @@ class TeamDataRepository(private val teamMapper: TeamMapper, private val teamDao
     }
 
     override suspend fun removeTeam(id: Uuid) = teamDao.deleteById(id)
+
+    override suspend fun addPointsToTeam(id: Uuid, points: Int): Team? {
+        val currentTeam = getTeamById(id) ?: return null
+        val newList = currentTeam.pointsPerRound.toMutableList() + points
+
+        teamDao.updatePointsPerRound(id, newList.toList())
+        return currentTeam.copy(pointsPerRound = newList)
+    }
 }

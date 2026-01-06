@@ -22,4 +22,8 @@ interface TeamDao {
     @Transaction
     @Query("DELETE FROM team WHERE team.id = :id")
     suspend fun deleteById(id: Uuid)
+
+    @Transaction
+    @Query("UPDATE team SET pointsPerRound = :pointsPerRound WHERE team.id = :id")
+    suspend fun updatePointsPerRound(id: Uuid, pointsPerRound: List<Int>)
 }
