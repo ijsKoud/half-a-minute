@@ -31,19 +31,19 @@ fun GameScoreboardScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         GameScoreboardHeader(
-            score = scoreboard.previousGameScore,
+            score = scoreboard.previousRoundScore,
             leaveTheGame = leaveTheGame
         )
 
         if (scoreboard.isGameFinished) {
             GameScoreboardEndOfGame(
-                teamName = TeamName.Blurple,
+                teamName = scoreboard.teams.first().name,
                 onClick = leaveTheGame
             )
         } else {
             GameScoreboardNextPlayerBanner(
-                playerName = "Claire",
-                teamName = TeamName.Blurple,
+                playerName = scoreboard.next.second.name,
+                teamName = scoreboard.next.first.name,
                 onClick = continueToNextRound
             )
         }
