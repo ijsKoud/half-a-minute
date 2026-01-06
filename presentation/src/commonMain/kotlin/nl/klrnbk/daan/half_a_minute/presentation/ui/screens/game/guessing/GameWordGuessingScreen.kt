@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -26,9 +27,8 @@ fun GameWordGuessingScreen(
     onEndOfRound: (guessedWords: List<String>) -> Unit,
     viewModel: GameWordGuessingViewModel = koinViewModel()
 ) {
-    OnLifecycleEvent(
-        onCreate = { viewModel.startCountdown() }
-    )
+    OnLifecycleEvent(onCreate = { viewModel.startCountdown() })
+    LaunchedEffect(words) { viewModel.reset() }
 
     val guessedWordState by viewModel.guessedWordsState.collectAsState()
     val countdownState by viewModel.countdownState.collectAsState()

@@ -23,6 +23,14 @@ class GameWordGuessingViewModel : ViewModel() {
     private val wordSelectionTimeMutableState = MutableStateFlow(false)
     val wordSelectionTimeState = wordSelectionTimeMutableState.asStateFlow()
 
+    fun reset() {
+        wordSelectionTimeMutableState.update { false }
+        showEndOfRoundDialogMutableState.update { false }
+
+        countdownMutableState.update { 30 }
+        guessedWordsMutableState.update { emptyList() }
+    }
+
     fun activateWordSelectionTime() {
         wordSelectionTimeMutableState.update { true }
         showEndOfRoundDialogMutableState.update { false }
