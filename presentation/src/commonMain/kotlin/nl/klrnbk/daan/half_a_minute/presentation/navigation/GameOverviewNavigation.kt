@@ -28,6 +28,7 @@ fun NavGraphBuilder.gameOverviewScreen(navController: NavController) {
         GameOverviewScreen(
             gameId = args.gameId,
             navigateBack = navController::popBackStack,
+            navigateToPlaying = navController::navigateToGamePlaying,
             navigateToTeamSelection = navController::navigateToIndividualTeamSelection
         )
     }

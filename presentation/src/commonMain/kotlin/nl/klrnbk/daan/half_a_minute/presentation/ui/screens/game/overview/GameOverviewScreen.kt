@@ -25,11 +25,16 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun GameOverviewScreen(
     navigateBack: () -> Unit,
+    navigateToPlaying: (Uuid) -> Unit,
     navigateToTeamSelection: (gameId: Uuid, playerId: Uuid) -> Unit,
     gameId: Uuid,
     viewModel: GameOverviewViewModel = koinViewModel()
 ) {
-    LaunchedEffect(gameId) { viewModel.loadGameDetails(gameId) }
+    LaunchedEffect(gameId) {
+        viewModel.goHome = navigateBack
+        viewModel.navigateToPlaying = navigateToPlaying
+        viewModel.loadGameDetails(gameId)
+    }
 
     val displayState by viewModel.gameState.collectAsState()
     val errorState by viewModel.errorState.collectAsState()
@@ -39,7 +44,10 @@ fun GameOverviewScreen(
             navigateBack = navigateBack,
             navigateToTeamSelection = navigateToTeamSelection,
             game = state.result,
-            validationError = errorState
+            validationError = errorState,
+            startGame = { pointsGoal, wordsPerRound ->
+                viewModel.startGame(state.result.id, pointsGoal, wordsPerRound)
+            }
         )
 
         is LoadingState -> LoadingScreen()
@@ -51,6 +59,7 @@ fun GameOverviewScreen(
 @Composable
 fun GameOverviewScreenContent(
     navigateToTeamSelection: (gameId: Uuid, playerId: Uuid) -> Unit,
+    startGame: (pointsGoal: Int, wordsPerRound: Int) -> Unit,
     validationError: String,
     navigateBack: () -> Unit,
     game: Game
@@ -66,6 +75,9 @@ fun GameOverviewScreenContent(
             teams = game.teams
         )
 
-        GameSettingsForm(validationError = validationError)
+        GameSettingsForm(
+            validationError = validationError,
+            onSubmit = startGame
+        )
     }
 }
