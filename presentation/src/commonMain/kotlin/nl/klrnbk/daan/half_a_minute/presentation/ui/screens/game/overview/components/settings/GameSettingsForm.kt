@@ -18,6 +18,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun GameSettingsForm(
     validationError: String,
+    onSubmit: (pointsGoal: Int, wordsPerRound: Int) -> Unit,
     viewModel: GameSettingsFormViewModel = koinViewModel()
 ) {
     val pointsGoalState by viewModel.pointsGoalState.collectAsState()
@@ -34,19 +35,21 @@ fun GameSettingsForm(
             color = AppTheme.colors.text.base
         )
 
-        SelectMenu(
-            title = "Goal",
-            options = gamePointsOptions,
-            selected = pointsGoalState,
-            onSelect = viewModel::updatePointsGoalOption
-        )
+        Column {
+            SelectMenu(
+                title = "Goal",
+                options = gamePointsOptions,
+                selected = pointsGoalState,
+                onSelect = viewModel::updatePointsGoalOption
+            )
 
-        SelectMenu(
-            title = "Words per round",
-            options = wordsPerRoundOptions,
-            selected = wordsPerRoundState,
-            onSelect = viewModel::updateWordsPerRoundOption
-        )
+            SelectMenu(
+                title = "Words per round",
+                options = wordsPerRoundOptions,
+                selected = wordsPerRoundState,
+                onSelect = viewModel::updateWordsPerRoundOption
+            )
+        }
     }
 
     Column(
@@ -63,7 +66,12 @@ fun GameSettingsForm(
             modifier = Modifier.fillMaxWidth(),
             disabled = validationError.isNotEmpty(),
             style = AppTheme.colors.button.secondary,
-            onClick = {}
+            onClick = {
+                onSubmit(
+                    pointsGoalState.value,
+                    wordsPerRoundState.value
+                )
+            }
         ) {
             Text("Let the game begin")
         }

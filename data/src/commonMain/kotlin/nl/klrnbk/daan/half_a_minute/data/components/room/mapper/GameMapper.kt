@@ -13,6 +13,8 @@ class GameMapper(private val teamMapper: TeamMapper, private val playerMapper: P
 
         return Game(
             id = entity.game.id,
+            pointsGoal = entity.game.pointsGoal,
+            wordsPerRound = entity.game.wordsPerRound,
             status = entity.game.status,
             host = playerMapper.map(entity.host),
             teams = mappedTeams,
@@ -22,6 +24,8 @@ class GameMapper(private val teamMapper: TeamMapper, private val playerMapper: P
 
     fun fromGameEntity(entity: GameEntity): Game = Game(
         id = entity.id,
+        pointsGoal = entity.pointsGoal,
+        wordsPerRound = entity.wordsPerRound,
         status = entity.status,
         host = null,
         teams = emptyList(),

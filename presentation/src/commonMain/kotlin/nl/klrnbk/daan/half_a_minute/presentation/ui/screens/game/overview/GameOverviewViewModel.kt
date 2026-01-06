@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Game
 import nl.klrnbk.daan.half_a_minute.domain.game.usecase.GetGameDetails
+import nl.klrnbk.daan.half_a_minute.domain.game.usecase.UpdateGameSettings
 import nl.klrnbk.daan.half_a_minute.presentation.state.DisplayState
 import nl.klrnbk.daan.half_a_minute.presentation.state.ErrorDisplayState
 import nl.klrnbk.daan.half_a_minute.presentation.state.ErrorState
@@ -16,8 +17,12 @@ import nl.klrnbk.daan.half_a_minute.presentation.state.ResultState
 import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
-class GameOverviewViewModel(private val getGameDetails: GetGameDetails) : ViewModel() {
+class GameOverviewViewModel(
+    private val getGameDetails: GetGameDetails,
+    private val updateGameSettings: UpdateGameSettings
+) : ViewModel() {
     var goHome: () -> Unit = {}
+    var navigateToPlaying: (Uuid) -> Unit = {}
 
     private val _gameState = MutableStateFlow<DisplayState<Game>>(LoadingState())
     val gameState = _gameState.asStateFlow()
@@ -37,6 +42,22 @@ class GameOverviewViewModel(private val getGameDetails: GetGameDetails) : ViewMo
 
             _gameState.tryEmit(ResultState(game))
             runValidation(game)
+        }
+    }
+
+    fun startGame(gameId: Uuid, pointsGoal: Int, wordsPerRound: Int) {
+        viewModelScope.launch {
+            runCatching { updateGameSettings(gameId, pointsGoal, wordsPerRound) }.fold(
+                onSuccess = { navigateToPlaying(it.id) },
+                onFailure = {
+                    val state = ErrorDisplayState(
+                        message = "Something went wrong, please try again later.",
+                        action = goHome
+                    )
+
+                    _gameState.tryEmit(ErrorState(state))
+                }
+            )
         }
     }
 
