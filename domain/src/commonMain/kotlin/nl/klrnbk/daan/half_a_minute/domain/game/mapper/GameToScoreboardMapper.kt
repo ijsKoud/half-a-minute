@@ -1,7 +1,7 @@
 package nl.klrnbk.daan.half_a_minute.domain.game.mapper
 
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Game
-import nl.klrnbk.daan.half_a_minute.domain.game.model.Player
+import nl.klrnbk.daan.half_a_minute.domain.game.model.GameRound
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Scoreboard
 import nl.klrnbk.daan.half_a_minute.domain.game.model.ScoreboardTeam
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Team
@@ -9,7 +9,7 @@ import org.koin.core.annotation.Factory
 
 @Factory
 class GameToScoreboardMapper {
-    operator fun invoke(game: Game, next: Pair<Team, Player>, previousRoundScore: Int): Scoreboard {
+    operator fun invoke(game: Game, next: GameRound, previousRoundScore: Int): Scoreboard {
         val teams = game.teams
             .sortedBy { it.pointsPerRound.reduceOrNull { a, b -> a + b } }
             .reversed()

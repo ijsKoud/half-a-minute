@@ -5,7 +5,7 @@ import kotlin.uuid.Uuid
 data class Scoreboard(
     val gameId: Uuid,
     val previousRoundScore: Int,
-    val next: Pair<Team, Player>,
+    val next: GameRound,
     val isGameFinished: Boolean,
     val teams: List<ScoreboardTeam>
 )

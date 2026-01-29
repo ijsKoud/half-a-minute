@@ -9,11 +9,11 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import nl.klrnbk.daan.half_a_minute.domain.game.mapper.GameToScoreboardMapper
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Game
-import nl.klrnbk.daan.half_a_minute.domain.game.model.Player
+import nl.klrnbk.daan.half_a_minute.domain.game.model.GameRound
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Scoreboard
-import nl.klrnbk.daan.half_a_minute.domain.game.model.Team
 import nl.klrnbk.daan.half_a_minute.domain.game.usecase.AddPointsToTeam
 import nl.klrnbk.daan.half_a_minute.domain.game.usecase.GetGameDetails
+import nl.klrnbk.daan.half_a_minute.domain.game.usecase.GetRoundOrder
 import nl.klrnbk.daan.half_a_minute.presentation.state.DisplayState
 import nl.klrnbk.daan.half_a_minute.presentation.state.ErrorDisplayState
 import nl.klrnbk.daan.half_a_minute.presentation.state.ErrorState
@@ -26,7 +26,8 @@ import org.koin.android.annotation.KoinViewModel
 class GameControllerViewModel(
     private val getGameDetails: GetGameDetails,
     private val addPointsToTeam: AddPointsToTeam,
-    private val gameToScoreboardMapper: GameToScoreboardMapper
+    private val gameToScoreboardMapper: GameToScoreboardMapper,
+    private val getRoundOrder: GetRoundOrder
 ) : ViewModel() {
     var goHome: () -> Unit = {}
 
@@ -36,7 +37,7 @@ class GameControllerViewModel(
     private val _roundsState = MutableStateFlow(0)
     val roundState = _roundsState.asStateFlow()
 
-    private val _roundOrderState = MutableStateFlow<List<Pair<Team, Player>>>(listOf())
+    private val _roundOrderState = MutableStateFlow<List<GameRound>>(listOf())
     val roundOrderState = _roundOrderState.asStateFlow()
 
     private val _scoreboardState = MutableStateFlow<Scoreboard?>(null)
@@ -88,28 +89,12 @@ class GameControllerViewModel(
         }
     }
 
-    private fun getNextUp(roundIdx: Int): Pair<Team, Player> {
-        if (_roundOrderState.value.size >= roundIdx) {
-            _roundsState.update { it + 1 }
+    private fun getNextUp(roundIdx: Int): GameRound {
+        if (roundIdx >= _roundOrderState.value.size) {
+            _roundsState.update { 0 }
             return _roundOrderState.value.first()
         }
 
         return _roundOrderState.value[roundIdx]
-    }
-
-    private fun getRoundOrder(game: Game): List<Pair<Team, Player>> {
-        val maxPlayers = game.teams.maxOfOrNull { it.players.size } ?: 0
-        val order = mutableListOf<Pair<Team, Player>>()
-
-        for (playerIndex in 0 until maxPlayers) {
-            for (team in game.teams) {
-                if (playerIndex < team.players.size) {
-                    val player = team.players[playerIndex]
-                    order += Pair(team, player)
-                }
-            }
-        }
-
-        return order.toList()
     }
 }
