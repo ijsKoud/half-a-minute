@@ -8,9 +8,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import kotlin.uuid.Uuid
-import nl.klrnbk.daan.half_a_minute.domain.game.model.Player
+import nl.klrnbk.daan.half_a_minute.domain.game.model.GameRound
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Scoreboard
-import nl.klrnbk.daan.half_a_minute.domain.game.model.Team
 import nl.klrnbk.daan.half_a_minute.presentation.state.ErrorState
 import nl.klrnbk.daan.half_a_minute.presentation.state.LoadingState
 import nl.klrnbk.daan.half_a_minute.presentation.state.ResultState
@@ -62,7 +61,7 @@ fun GameControllerScreen(
 fun GameControllerScreenContent(
     scoreboard: Scoreboard?,
     randomWords: List<String>,
-    next: Pair<Team, Player>,
+    next: GameRound,
     onEndOfRound: (teamId: Uuid, guessedAmount: Int) -> Unit,
     continueToNextRound: () -> Unit,
     leaveTheGame: () -> Unit
@@ -72,7 +71,7 @@ fun GameControllerScreenContent(
             var isPlayerReady by remember { mutableStateOf(false) }
             if (!isPlayerReady) {
                 NativeDialog(
-                    title = "You are up ${next.second.name}!",
+                    title = "You are up ${next.player.name}!",
                     description = "Ready to start?",
                     actions = listOf(
                         DialogAction(
@@ -87,7 +86,7 @@ fun GameControllerScreenContent(
 
             GameWordGuessingScreen(
                 words = randomWords,
-                onEndOfRound = { onEndOfRound(next.first.id, it.size) }
+                onEndOfRound = { onEndOfRound(next.team.id, it.size) }
             )
         }
 

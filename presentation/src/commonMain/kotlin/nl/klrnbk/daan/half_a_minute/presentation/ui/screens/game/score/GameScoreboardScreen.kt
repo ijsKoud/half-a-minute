@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import nl.klrnbk.daan.half_a_minute.domain.game.model.Scoreboard
-import nl.klrnbk.daan.half_a_minute.domain.game.model.TeamName
 import nl.klrnbk.daan.half_a_minute.presentation.theme.AppTheme
 import nl.klrnbk.daan.half_a_minute.presentation.theme.dimension.Dimension
 import nl.klrnbk.daan.half_a_minute.presentation.ui.screens.game.score.components.GameScoreboardEndOfGame
@@ -42,8 +41,8 @@ fun GameScoreboardScreen(
             )
         } else {
             GameScoreboardNextPlayerBanner(
-                playerName = scoreboard.next.second.name,
-                teamName = scoreboard.next.first.name,
+                playerName = scoreboard.next.player.name,
+                teamName = scoreboard.next.team.name,
                 onClick = continueToNextRound
             )
         }
